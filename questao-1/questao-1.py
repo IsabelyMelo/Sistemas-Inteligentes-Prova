@@ -1,3 +1,8 @@
+"""Questão 01 – Desenvolva um algoritmo FP-Growth para resolver o problema
+Market_Basket_Optimisation (disponível juntamente com a prova). Utilize um suporte
+mínimo de 300 e confiança mínima de 0,3. Apresente os dados analisados, destacando:
+• Os itens que mais aparecem individualmente nas transações;
+• Os conjuntos de itens mais frequentes que ocorrem juntos."""
 import os
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -131,7 +136,7 @@ def plot_graph(data, title, xlabel, filename):
     os.makedirs("questao-1/graficos", exist_ok=True)
 
     plt.figure(figsize=(12, 6))
-    bars = plt.barh(labels[::-1], values[::-1], color='mistyrose')
+    bars = plt.barh(labels[::-1], values[::-1], color='royalblue')
     plt.xlabel(xlabel)
     plt.title(title)
 
