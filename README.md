@@ -29,11 +29,7 @@ As implementações foram feitas do zero, sem o uso de bibliotecas de machine le
 ├── questao-2/
 │   ├── questao-2.py
 │   └── graficos/
-│       ├── grafico_original.png
 │       ├── grafico_dbscan.png
-│       ├── two_moons_data.csv
-│       └── two_moons_dbscan.csv
-│
 ├── questao-3/
 │   ├── questao-3.py
 │   └── graficos/
@@ -77,9 +73,7 @@ python questao-2/questao-2.py
   - `eps = 0.15`
   - `min_samples = 5`
 - **Saídas**:
-  - Gráfico dos dados com rótulos verdadeiros (`grafico_original.png`)
-  - Gráfico dos clusters gerados pelo DBSCAN (`grafico_dbscan.png`)
-  - Arquivos CSV com os rótulos e clusters detectados
+  - Gráfico dos clusters gerados pelo DBSCAN (`dbscan_clusters.png`)
 
 ### Questão 3 - K-Médias (Blobs)
 
