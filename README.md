@@ -1,75 +1,102 @@
-# Projeto de Classificação Supervisionada
+
+# Projeto de Sistemas Inteligentes I - FP-Growth, DBSCAN e K-Médias
+
 ## Aluna:
 
-- ### Isabely Toledo de Melo
+- Isabely Toledo de Melo
 
 ## Descrição do Projeto
 
-Este repositório apresenta a implementação manual de dois algoritmos de aprendizado supervisionado: **K-Nearest Neighbors (KNN)** e **Perceptron Linear**, aplicados em dois problemas clássicos de classificação:
+Este repositório apresenta a implementação manual de três algoritmos estudados na disciplina de Sistemas Inteligentes I, cada um resolvendo uma tarefa distinta de análise de dados:
 
-- **Problema 1 - Azul/Laranja**: Classificação binária com base em duas características (`x1`, `x2`) a partir do dataset `dados_azul_laranja.csv`.
-- **Problema 2 - Iris**: Classificação multiclasse para identificar espécies de flores (Setosa, Versicolor, Virginica) com base em atributos medidos.
+- **FP-Growth**: Descoberta de padrões frequentes e regras de associação em um conjunto de transações de supermercado.
+- **DBSCAN**: Algoritmo de agrupamento baseado em densidade aplicado ao conjunto de dados sintético `Two Moons`.
+- **K-Médias**: Algoritmo de agrupamento baseado em centróides, aplicado a dados gerados com `make_blobs`.
 
-O trabalho segue os critérios do enunciado, utilizando apenas implementações manuais (sem bibliotecas de machine learning), o que possibilita alcançar até **100% da nota**.
+As implementações foram feitas do zero, sem o uso de bibliotecas de machine learning como `scikit-learn` ou `mlxtend`, conforme as diretrizes da avaliação. Apenas bibliotecas auxiliares (`numpy`, `pandas`, `matplotlib`, `os`) foram utilizadas para manipulação de dados e visualizações.
 
 ## Estrutura de Arquivos
 
 ```
-├── Datasets/
-│   └── dados_azul_laranja.csv
-├── Exports/
-│   ├── grafico_knn_azul_laranja.png
-│   ├── grafico_perceptron_azul_laranja.png
-│   ├── grafico_knn_iris.png
-│   └── grafico_perceptron_iris.png
-├── main.py
-├── requirements.txt
+├── questao-1/
+│   ├── questao-1.py
+│   ├── Market_Basket_Optimisation.csv
+│   └── graficos/
+│       ├── itens_frequentes.png
+│       ├── conjuntos_frequentes.png
+│       └── regras_associacao.png
+│
+├── questao-2/
+│   ├── questao-2.py
+│   └── graficos/
+│       ├── grafico_original.png
+│       ├── grafico_dbscan.png
+│       ├── two_moons_data.csv
+│       └── two_moons_dbscan.csv
+│
+├── questao-3/
+│   ├── questao-3.py
+│   └── graficos/
+│       ├── original.png
+│       └── kmeans_clusters.png
+│
 └── README.md
 ```
 
-- **main.py**: contém as funções manuais de divisão dos dados, implementação do KNN e Perceptron, além dos scripts para análise, treinamento, teste e visualização.
-- **Datasets/**: pasta com o arquivo CSV fornecido para o problema 1.
-- **Exports/**: pasta com os gráficos de saída gerados automaticamente.
-- **README.md**: este arquivo com explicações sobre o projeto.
-
 ## Instruções de Execução
 
-1. Certifique-se de ter o Python instalado (>= 3.8).
-2. Crie um ambiente virtual (opcional, mas recomendado):
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # Linux/macOS
-   venv\Scripts\activate   # Windows
-   ```
-3. Instale as dependências:
-   ```bash
-   pip install -r requirements.txt
-   ```
-4. Execute o código:
-   ```bash
-   python main.py
-   ```
+1. Instale as dependências:
+```bash
+pip install numpy pandas matplotlib
+```
 
-## Breve Explicação das Escolhas
+2. Execute os scripts de cada questão:
 
-### Algoritmos Utilizados:
-- **KNN (K-Nearest Neighbors)**:
-  - Baseado na proximidade dos dados, com k=3.
-  - Implementado manualmente.
-  - Fronteiras de decisão não-lineares e robusto para poucos atributos.
+### Questão 1 - FP-Growth
 
-- **Perceptron Linear**:
-  - Algoritmo linear simples.
-  - Estratégia One-vs-All para multiclasse.
-  - Rápido, interpretável, mas limitado a separabilidade linear.
+```bash
+python questao-1/questao-1.py
+```
 
-### Visualizações:
-- Gráficos com fronteiras de decisão salvos na pasta `Exports/`.
+- **Arquivo de entrada**: `Market_Basket_Optimisation.csv`
+- **Parâmetros**:
+  - Suporte mínimo: 300
+  - Confiança mínima: 0.3
+- **Saídas**:
+  - Gráficos de itens frequentes, conjuntos frequentes e regras de associação
+  - Impressão dos padrões mais relevantes no terminal
 
-### Divisão dos Dados:
-- Divisão manual 80/20 com `seed=42` para reprodutibilidade.
+### Questão 2 - DBSCAN (Two Moons)
+
+```bash
+python questao-2/questao-2.py
+```
+
+- **Dados gerados manualmente (tipo "two moons")**
+- **Parâmetros**:
+  - `eps = 0.15`
+  - `min_samples = 5`
+- **Saídas**:
+  - Gráfico dos dados com rótulos verdadeiros (`grafico_original.png`)
+  - Gráfico dos clusters gerados pelo DBSCAN (`grafico_dbscan.png`)
+  - Arquivos CSV com os rótulos e clusters detectados
+
+### Questão 3 - K-Médias (Blobs)
+
+```bash
+python questao-3/questao-3.py
+```
+
+- **Dados gerados com `make_blobs`**
+- **Parâmetros**:
+  - `k = 4`
+- **Saídas**:
+  - Gráfico dos dados originais (`original.png`)
+  - Gráfico dos clusters gerados pelo K-Médias (`kmeans_clusters.png`)
+  - Impressão da contagem de pontos por cluster no terminal
 
 ## Considerações Finais
 
-- Código sem uso de bibliotecas de machine learning para lógica dos modelos.
-- Projeto reforça aprendizado prático e visual de classificação.
+- Todos os algoritmos foram implementados manualmente conforme especificado na prova.
+- O projeto reforça o entendimento prático dos principais algoritmos de agrupamento e descoberta de padrões frequentes.
+- Os gráficos foram organizados por questão em suas respectivas pastas.
