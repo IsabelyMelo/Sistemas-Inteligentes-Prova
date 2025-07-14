@@ -1,17 +1,17 @@
 """
 Questão 02 – Considere os dados apresentados abaixo. Escolha um dos algoritmos
-estudados em sala de aula para resolver esse problema.
+estudados em sala de aula para resolver esse problema. (DBSCAN)
 """
 import os
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.datasets import make_moons
 
-# Função para calcular distância euclidiana
+# funcao para calcular distancia euclidiana
 def euclidean_distance(a, b):
     return np.linalg.norm(a - b)
 
-# Retorna índices dos vizinhos no raio eps
+# retorna indices dos vizinhos no raio eps
 def region_query(X, point_idx, eps):
     neighbors = []
     for i, point in enumerate(X):
@@ -19,11 +19,11 @@ def region_query(X, point_idx, eps):
             neighbors.append(i)
     return neighbors
 
-# Expande o cluster a partir de um ponto núcleo
+# expande o cluster a partir de um ponto nucleo
 def expand_cluster(X, labels, point_idx, cluster_id, eps, min_pts):
     neighbors = region_query(X, point_idx, eps)
     if len(neighbors) < min_pts:
-        labels[point_idx] = -1  # Ruído
+        labels[point_idx] = -1  # ruido
         return False
     else:
         labels[point_idx] = cluster_id
@@ -40,7 +40,7 @@ def expand_cluster(X, labels, point_idx, cluster_id, eps, min_pts):
             i += 1
         return True
 
-# Algoritmo DBSCAN
+# DBSCAN
 def dbscan(X, eps, min_pts):
     labels = np.zeros(len(X), dtype=int)
     cluster_id = 0
@@ -79,7 +79,7 @@ def plot_graph(X, labels, title, filename):
 
 
 if __name__ == "__main__":
-    # Gerar dados com o make_moons
+    # gerar dados
     X, y = make_moons(n_samples=500, noise=0.06, random_state=23)
 
     eps = 0.2
