@@ -43,6 +43,7 @@ def kmeans(X, k, max_iters=100, tol=1e-4):
         centroids = new_centroids
     return labels, centroids
 
+# graficos
 def plot_graph(X, labels, title, filename, centroids=None):
     import matplotlib.patches as mpatches
 
@@ -72,6 +73,8 @@ def plot_graph(X, labels, title, filename, centroids=None):
     plt.savefig(f"questao-3/graficos/{filename}", dpi=300)
     plt.close()
 
+
+
 if __name__ == "__main__":
     # gerar dados
     X, y_true = make_blobs(n_samples=500, centers=4, cluster_std=1.5, random_state=23)
@@ -89,3 +92,7 @@ if __name__ == "__main__":
     print("\nQuantidade de pontos por cluster:")
     for cluster_id, count in sorted(cluster_stats.items()):
         print(f"Cluster {cluster_id}: {count}")
+
+    print("\nCoordenadas dos centróides encontrados:")
+    for i, c in enumerate(centroids):
+        print(f"Centróide {i}: {c}")

@@ -3,6 +3,7 @@ Market_Basket_Optimisation (disponível juntamente com a prova). Utilize um supo
 mínimo de 300 e confiança mínima de 0,3. Apresente os dados analisados, destacando:
 • Os itens que mais aparecem individualmente nas transações;
 • Os conjuntos de itens mais frequentes que ocorrem juntos."""
+
 import os
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -136,7 +137,7 @@ def plot_graph(data, title, xlabel, filename):
     os.makedirs("questao-1/graficos", exist_ok=True)
 
     plt.figure(figsize=(12, 6))
-    bars = plt.barh(labels[::-1], values[::-1], color='royalblue')
+    bars = plt.barh(labels[::-1], values[::-1], color='seagreen')
     plt.xlabel(xlabel)
     plt.title(title)
 
@@ -146,6 +147,8 @@ def plot_graph(data, title, xlabel, filename):
     plt.subplots_adjust(left=0.2)
     plt.savefig(f"questao-1/graficos/{filename}", dpi=300)
     plt.close()
+
+
 
 if __name__ == "__main__":
     filepath = "questao-1/Market_Basket_Optimisation.csv"

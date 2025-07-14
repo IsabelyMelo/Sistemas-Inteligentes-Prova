@@ -51,6 +51,7 @@ def dbscan(X, eps, min_pts):
             cluster_id += 1
     return labels
 
+# graficos
 def plot_graph(X, labels, title, filename):
     import matplotlib.patches as mpatches
 
